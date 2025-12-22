@@ -155,7 +155,9 @@
     </div>
   </header>
 
-  <button class="logout" onclick="logout()">Logout</button>
+  <form action="/logout" method="POST" style="display:inline;">
+    <button class="logout" type="submit">Logout</button>
+</form>
 
   <div class="dashboard">
     <!-- Heartbeat -->
@@ -256,9 +258,9 @@
   // initialize
   clearData();
 
-  function logout() {
-    window.location.href = "/login";
-  }
+  // function logout() {
+  //   window.location.href = "/login";
+  // }
 </script>
 
 

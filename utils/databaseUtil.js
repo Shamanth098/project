@@ -2,29 +2,37 @@ const mongo = require("mongodb");
 
 const MongoClient = mongo.MongoClient;
 
-const MONGO_URL =
-  "mongodb+srv://shamanthgb0987:shamanthgb123@cluster0.aw6fkxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// --- CRITICAL CHANGE: Switched from MongoDB Atlas to Localhost ---
+// Connection URL for the local MongoDB server running on port 27017
+const MONGO_URL = "mongodb://localhost:27017/soliders";
 
 
-  let _db;
+let _db;
 
 const mongoConnect = (callback) => {
-  MongoClient.connect(MONGO_URL)
-    .then((client) => {
-      callback();
-      _db = client.db('soliders');
-    })
-    .catch(err => {
-      console.log("Error while connecting to mongo", err);
-    });
+    // Note: Added an explicit console log to confirm successful connection
+    MongoClient.connect(MONGO_URL)
+        .then((client) => {
+            _db = client.db('soliders'); // 'soliders' is the database name
+            console.log("Database connection successful to Localhost MongoDB!");
+            callback();
+        })
+        .catch(err => {
+            console.log("Error while connecting to mongo. Check if your local MongoDB server is running (mongod).", err);
+            // It's good practice to exit the process if the DB connection fails
+            throw err;
+        });
 };
 
-const getDb = ()  => {
-  if (!_db) {
-    throw new Error("No database found");
-  }
-  return _db;
-}
+const getDb = () => {
+    if (!_db) {
+        throw new Error("No database connection found!");
+    }
+    return _db;
+};
 
-module.exports = mongoConnect;
-module .getDb = getDb;
+// Export both utility functions
+module.exports = {
+    mongoConnect: mongoConnect,
+    getDb: getDb
+};
