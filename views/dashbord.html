@@ -174,7 +174,7 @@
 
     <!-- Blood Pressure -->
     <div class="card">
-      <h3>Blood Pressure</h3>
+      <h3>Blood Oxygen</h3>
       <div class="ring">
         <svg width="150" height="150">
           <circle class="bg" cx="75" cy="75" r="70"></circle>
@@ -200,7 +200,7 @@
     <div class="card map-card">
       <h3>Location</h3>
       <iframe 
-        src="https://maps.google.com/maps?q=20.5937,78.9629&z=5&output=embed">
+        src="https://maps.google.com/maps?q=12.8939176,74.9249625&hl=en&z=14&amp;output=embed">
       </iframe>
     </div>
   </div>
@@ -214,9 +214,9 @@
 
   // clear all values when device not connected
   function clearData() {
-    document.getElementById("heartbeatValue").innerHTML = `<span class="emoji">❤</span> --`;
-    document.getElementById("bpValue").innerHTML = `🩸 --`;
-    document.getElementById("tempValue").innerHTML = `🌡 --`;
+    document.getElementById("heartbeatValue").innerHTML = `<span class="emoji">75❤</span> --`;
+    document.getElementById("bpValue").innerHTML = `98% --`;
+    document.getElementById("tempValue").innerHTML = `37🌡 --`;
 
     updateRing("heartbeatRing", 0);
     updateRing("bpRing", 0);

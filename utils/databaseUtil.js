@@ -4,7 +4,9 @@ const MongoClient = mongo.MongoClient;
 
 // --- CRITICAL CHANGE: Switched from MongoDB Atlas to Localhost ---
 // Connection URL for the local MongoDB server running on port 27017
-const MONGO_URL = "mongodb://localhost:27017/soliders";
+const MONGO_URL = process.env.MONGO_URL;
+
+// mongodb+srv://shamanthgb0987_db_user:44KIEIsq23gwKKU0@project.ddvuzuw.mongodb.net/?appName=project
 
 
 let _db;
